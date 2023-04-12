@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/codingapple_blog/static/css/main.273f2164.css",
+    "main.js": "/codingapple_blog/static/js/main.a56f6366.js",
+    "static/js/787.f587e8d5.chunk.js": "/codingapple_blog/static/js/787.f587e8d5.chunk.js",
+    "index.html": "/codingapple_blog/index.html",
+    "main.273f2164.css.map": "/codingapple_blog/static/css/main.273f2164.css.map",
+    "main.a56f6366.js.map": "/codingapple_blog/static/js/main.a56f6366.js.map",
+    "787.f587e8d5.chunk.js.map": "/codingapple_blog/static/js/787.f587e8d5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.273f2164.css",
+    "static/js/main.a56f6366.js"
+  ]
+}
