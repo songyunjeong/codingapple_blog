@@ -9,6 +9,12 @@ function App() {
   ]);
   let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
+  let [title, setTitle] = useState(0);
+  let [input, setInput] = useState('');
+
+  let now = new Date();
+  let todayMonth = now.getMonth() + 1;
+  let todayDate = now.getDate();
 
   function changeTitle() {
     let copy = [...글제목];
@@ -43,25 +49,65 @@ function App() {
             <h4
               onClick={() => {
                 setModal(!modal);
+                setTitle(i);
               }}
             >
-              {data}
+              {data}{' '}
+              <span
+                onClick={(e) => {
+                  e.stopPropagation();
+                  let copy = [...따봉];
+                  copy[i] = copy[i] + 1;
+                  따봉변경(copy);
+                }}
+              >
+                👍🏻 {따봉[i]}
+              </span>
             </h4>
+            <p>
+              {todayMonth}월 {todayDate}일 발행
+            </p>
             <button
               onClick={() => {
-                let copy = [...따봉];
-                copy[i] = copy[i] + 1;
-                따봉변경(copy);
+                let copy = [...글제목];
+                copy.splice(i, 1);
+                글제목변경(copy);
               }}
             >
-              👍🏻 {따봉[i]}
+              삭제
             </button>
-            <p>2월 17일 발행</p>
           </div>
         );
       })}
 
-      {modal ? <Modal 글제목={글제목} changeTitle={changeTitle} /> : null}
+      <input
+        type='text'
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+      />
+      <button
+        onClick={() => {
+          if (input === '') {
+            return;
+          }
+          let copy = [...글제목];
+          copy.unshift(input);
+          글제목변경(copy);
+        }}
+      >
+        등록
+      </button>
+
+      {modal ? (
+        <Modal
+          todayMonth={todayMonth}
+          todayDate={todayDate}
+          title={title}
+          changeTitle={changeTitle}
+          글제목={글제목}
+        />
+      ) : null}
     </div>
   );
 }
@@ -69,8 +115,10 @@ function App() {
 function Modal(props) {
   return (
     <div className='modal'>
-      <h4>{props.글제목[0]}</h4>
-      <p>날짜</p>
+      <h4>{props.글제목[props.title]}</h4>
+      <p>
+        날짜 {props.todayMonth}월 {props.todayDate}일
+      </p>
       <p>상세내용</p>
       <button
         onClick={() => {
