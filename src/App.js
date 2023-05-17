@@ -1,16 +1,16 @@
-import './App.css';
-import { useState } from 'react';
+import "./App.css";
+import { useState } from "react";
 
 function App() {
   let [글제목, 글제목변경] = useState([
-    '남자 코트 추천',
-    '강남 우동 맛집',
-    '파이썬 독학',
+    "남자 코트 추천",
+    "강남 우동 맛집",
+    "파이썬 독학",
   ]);
   let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
   let [title, setTitle] = useState(0);
-  let [input, setInput] = useState('');
+  let [input, setInput] = useState("");
 
   let now = new Date();
   let todayMonth = now.getMonth() + 1;
@@ -18,16 +18,17 @@ function App() {
 
   function changeTitle() {
     let copy = [...글제목];
-    copy[0] = '여자 코트 추천';
+    copy[0] = "여자 코트 추천";
     글제목변경(copy);
   }
 
   return (
-    <div className='App'>
-      <div className='black-nav'>
+    <div className="App">
+      <div className="black-nav">
         <h4>ReactBlog</h4>
       </div>
       <button
+        className="user_rename"
         onClick={() => {
           changeTitle();
         }}
@@ -45,14 +46,14 @@ function App() {
       </button>
       {글제목.map((data, i) => {
         return (
-          <div className='list' key={i}>
+          <div className="list" key={i}>
             <h4
               onClick={() => {
                 setModal(!modal);
                 setTitle(i);
               }}
             >
-              {data}{' '}
+              {data}{" "}
               <span
                 onClick={(e) => {
                   e.stopPropagation();
@@ -81,14 +82,16 @@ function App() {
       })}
 
       <input
-        type='text'
+        className="user_input"
+        type="text"
         onChange={(e) => {
           setInput(e.target.value);
         }}
       />
       <button
+        className="user_input_btn"
         onClick={() => {
-          if (input === '') {
+          if (input === "") {
             return;
           }
           let copy = [...글제목];
@@ -114,7 +117,7 @@ function App() {
 
 function Modal(props) {
   return (
-    <div className='modal'>
+    <div className="modal">
       <h4>{props.글제목[props.title]}</h4>
       <p>
         날짜 {props.todayMonth}월 {props.todayDate}일

@@ -8,6 +8,7 @@ div {
 
 .list {
   padding-left: 20px;
+  padding-bottom: 20px;
   text-align: left;
   border-bottom: 1px solid grey;
 }
@@ -25,6 +26,16 @@ div {
   width: 100%;
   color: white;
   padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.user_rename {
+  margin-right: 8px;
+}
+
+.user_input {
+  margin-top: 20px;
+  margin-right: 8px;
 }
 
 .App-logo {
